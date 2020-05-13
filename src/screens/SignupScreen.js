@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, StyleSheet} from 'react-native';
 import { Button, Text, Input} from 'react-native-elements';
 import Spacer from '../components/Spacer';
+import { Context as AuthContext } from '../context/AuthContext';
 
 const SignupScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const {state, signup} = useContext(AuthContext);
+
+    console.log(state)
 
     return(
         <View style={styles.container}>  
@@ -30,7 +35,14 @@ const SignupScreen = ({ navigation }) => {
                 autoCorrect={false}
             />
             <Spacer>
-                <Button title="Sign Up" />
+
+                {state.errorMessage ? 
+                <Text style={styles.errorMessage}>{state.errorMessage}</Text> 
+                : null}
+
+                <Button 
+                onPress={() => signup({ email, password})}
+                title="Sign Up" />
             </Spacer>
         </View>
     );
@@ -41,6 +53,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent:'center',
         marginBottom: 250
+    },
+    errorMessage: {
+        fontSize: 16,
+        color: 'red',
+        marginLeft: 15,
+        marginTop: 15
     }
 });
 
