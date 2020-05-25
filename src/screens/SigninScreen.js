@@ -18,8 +18,7 @@ const SigninScreen = () => {
                 headerText="Sign in for tracker"
                 submitButtonText="Sign in"
                 onSubmit={signin}
-                errorMessage={state.errorMessage}
-            
+                errorMessage={state.errorMessage}           
             />
             <NavLink 
                 text="Don't have an account ? Signup now"

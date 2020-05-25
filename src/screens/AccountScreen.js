@@ -13,16 +13,14 @@ const AccountScreen = () => {
             <Text style={{ fontSize: 48}}>
                 Account Screen 
             </Text>
-            <Button 
-            
-            onPress={signout}
-            title="Sign out"
+            <Button   
+                onPress={signout}
+                title="Sign out"
             />
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({});
-
 
 export default AccountScreen;
