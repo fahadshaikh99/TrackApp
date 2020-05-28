@@ -5,35 +5,15 @@ import Map from '../components/Map';
 import { Text} from 'react-native-elements';
 import { requestPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location';
 import { Context as LocationContext} from '../context/LocationContext';
-
+import useLocation from '../hooks/useLocation';
 
 const TrackCreateScreen = () => {
 
-    useEffect(() => {
-        startWatching();
-    }, []);
-
+    
     const { addLocation } = useContext(LocationContext);
 
-    const [ err, setErr] = useState(null);
-        const startWatching = async () => {
-            try{
-                await requestPermissionsAsync();
-                await watchPositionAsync({
-                    accuracy: Accuracy.BestForNavigation,
-                    timeInterval: 1000,
-                    distanceInterval: 10
-                }, (location) => {
-                  //  console.log(location);
-                    addLocation(location);
-                }
-                );
-            }
-            catch(e){
-                console.log(e);
-                
-            }
-        }
+    const [err] = useLocation(addLocation);
+      
 
 
     return(
@@ -43,7 +23,7 @@ const TrackCreateScreen = () => {
             </Text>
             <Map />
             
-            {/* {err ? <Text>Please enalbe location Services</Text> : null } */}
+            {err ? <Text>Please enalbe location Services</Text> : null }
         </SafeAreaView>
     );
 }
