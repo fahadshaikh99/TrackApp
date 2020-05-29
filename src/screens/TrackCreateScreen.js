@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useContext} from 'react';
 import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-navigation';
+import { SafeAreaView, NavigationEvents, withNavigationFocus } from 'react-navigation';
 import Map from '../components/Map';
 import { Text} from 'react-native-elements';
 import { requestPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location';
 import { Context as LocationContext} from '../context/LocationContext';
 import useLocation from '../hooks/useLocation';
 
-const TrackCreateScreen = () => {
+const TrackCreateScreen = ({ isFocused }) => {
 
     
     const { addLocation } = useContext(LocationContext);
 
-    const [err] = useLocation(addLocation);
+    const [err] = useLocation(isFocused, addLocation);
       
+    console.log(isFocused);
 
 
     return(
@@ -22,7 +23,9 @@ const TrackCreateScreen = () => {
                 Create Track Screen 
             </Text>
             <Map />
-            
+            {/* <NavigationEvents 
+                onWillBlur={() => console.log('Leaving')}
+            /> */}
             {err ? <Text>Please enalbe location Services</Text> : null }
         </SafeAreaView>
     );
@@ -31,4 +34,4 @@ const TrackCreateScreen = () => {
 const styles = StyleSheet.create({});
 
 
-export default TrackCreateScreen;
+export default withNavigationFocus(TrackCreateScreen);
