@@ -6,6 +6,7 @@ import { Text} from 'react-native-elements';
 import { requestPermissionsAsync, watchPositionAsync, Accuracy } from 'expo-location';
 import { Context as LocationContext} from '../context/LocationContext';
 import useLocation from '../hooks/useLocation';
+import TrackForm  from '../components/TrackForm';
 
 const TrackCreateScreen = ({ isFocused }) => {
 
@@ -14,7 +15,7 @@ const TrackCreateScreen = ({ isFocused }) => {
 
     const [err] = useLocation(isFocused, addLocation);
       
-    console.log(isFocused);
+ //   console.log(isFocused);
 
 
     return(
@@ -23,9 +24,12 @@ const TrackCreateScreen = ({ isFocused }) => {
                 Create Track Screen 
             </Text>
             <Map />
+            <TrackForm />
             {/* <NavigationEvents 
                 onWillBlur={() => console.log('Leaving')}
             /> */}
+
+
             {err ? <Text>Please enalbe location Services</Text> : null }
         </SafeAreaView>
     );
