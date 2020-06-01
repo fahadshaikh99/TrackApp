@@ -6,14 +6,14 @@ import { Context as LocationContext} from '../context/LocationContext';
 const TrackForm = () => {
 
     const {
-        state: { name, recording, locations},
+        state: { name, recording, location},
         
         startRecording,
         stopRecording,
         changeName
     } = useContext(LocationContext);
 
-    console.log(location.length);
+    console.log(location.length)
 
     return(
         <>

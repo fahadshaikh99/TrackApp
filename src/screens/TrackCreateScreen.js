@@ -11,7 +11,7 @@ import TrackForm  from '../components/TrackForm';
 const TrackCreateScreen = ({ isFocused }) => {
 
     
-    const { addLocation } = useContext(LocationContext);
+    const {state, addLocation } = useContext(LocationContext);
 
     const [err] = useLocation(isFocused, location => {
         addLocation(location, state.recording);
@@ -32,7 +32,7 @@ const TrackCreateScreen = ({ isFocused }) => {
             /> */}
 
 
-            {err ? <Text>Please enalbe location Services</Text> : null }
+            {/* {err ? <Text>Please enalbe location Services</Text> : null } */}
         </SafeAreaView>
     );
 }
