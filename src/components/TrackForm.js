@@ -24,11 +24,13 @@ const TrackForm = () => {
                     onChangeText={changeName}
                 />
             </Spacer>
-            {recording ? (
-            <Button  title=" Stop" onPress={stopRecording} /> 
-            ): (
-            <Button title="Start Recording" onPress={startRecording} />
-            )}
+            <Spacer>
+                {recording ? (
+                <Button  title=" Stop" onPress={stopRecording} /> 
+                ): (
+                <Button title="Start Recording" onPress={startRecording} />
+                )}
+            </Spacer>
 
         </>
     );
