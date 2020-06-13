@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator} from 'react-native';
+import { StyleSheet, ActivityIndicator} from 'react-native';
 import MapView, { Polyline, Circle } from 'react-native-maps';
 import { Context as LocationContext} from '../context/LocationContext';
 
