@@ -10,7 +10,7 @@ const trackReducer = (state, action) => {
     }
 };
 
-const fetchTracks = dispatch => () => {
+const fetchTracks = dispatch => async () => {
 
     const response = await trackerApi.get('./tracks');
     dispatch({ type: 'fetch_tracks', payload: response.data });

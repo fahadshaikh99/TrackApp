@@ -9,7 +9,7 @@ const TrackDetailScreen = ({ navigation }) => {
     const _id = navigation.getParam('_id');
 
     const tracks = state.find(t => t._id === _id);
-    const initialCoords = track.locations[0].coords;
+    const initialCoords = tracks.locations[0].coords;
 
     return(
         <View>
